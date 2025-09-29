@@ -13,7 +13,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d saasdb"]  # Hardcodea los defaults para evitar problemas
+      test: ["CMD-SHELL", "pg_isready -U postgres -d saasdb"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,7 +24,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:strongpassword123@database:5432/saasdb?schema=public}  # Default hardcoded, sin anidamiento
+      DATABASE_URL: ${DATABASE_URL}  # Sin default; configúralo en Coolify UI
     depends_on:
       database:
         condition: service_healthy
