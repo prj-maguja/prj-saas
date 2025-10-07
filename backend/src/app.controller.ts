@@ -7,6 +7,7 @@ export class AppController {
 
   @Get('hello')
   getHello(): Promise<string> {
+    console.log("funcion getHello()", new Error().stack.split('\n').slice(0,3));
     return this.appService.getHello();
   }
 }
