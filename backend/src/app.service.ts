@@ -7,7 +7,7 @@ export class AppService {
 
   async getHello(): Promise<string> {
     const result = await this.dataSource.query('SELECT NOW()');
-    console.log("funcion getHello()", new Error().stack);
+    console.log("funcion getHello()", new Error().stack.split('\n').slice(0,3));
     return `Hello from backend! Current DB time: ${result[0].now}`;
   }
 }
